@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinCP"
+             x:Class="XamarinCP.Pages.CompanyListPage" x:Name="CompanyContentPage">
+    
+    <ContentPage.Content>
+        <StackLayout >
+            <StackLayout Orientation="Horizontal">
+                <Entry x:Name="SearchText" HorizontalOptions="FillAndExpand"/>
+                <Button Clicked="OnSearchTextClick" Text="Search" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <ListView x:Name="CompanyListView"  RowHeight="60">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Padding="5,5,0,5" Orientation="Horizontal" Spacing="15">
+                                        <Image  Source="{Binding ImageUrl}" WidthRequest="80" HeightRequest="80" ></Image>
+                                        <StackLayout Padding="5,0,0,0" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Medium"></Label>
+                                                <Label Text="{Binding Id}" HorizontalOptions="End" FontAttributes="Bold" FontSize="Medium"></Label>
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label Text="{Binding Address}"></Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <Button Text=">" Command="{Binding BindingContext.DetailCommand, Source={x:Reference CompanyContentPage}}"
+                                                CommandParameter="{Binding Id}" HorizontalOptions="End" WidthRequest="40" 
+                                                HeightRequest="80" Margin="5"></Button>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
