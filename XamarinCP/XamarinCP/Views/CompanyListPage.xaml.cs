@@ -11,9 +11,7 @@ namespace XamarinCP.Views
         public CompanyListPage()
         {
             InitializeComponent();      
-            var companyViewModel=new CompanyViewModel(this.Navigation);
-            BindingContext = companyViewModel;
-            this.CompanyList.ItemsSource = companyViewModel.AllCompanies;
+            this.BindingContext=new CompanyViewModel(this.Navigation);
         }
         
     }
