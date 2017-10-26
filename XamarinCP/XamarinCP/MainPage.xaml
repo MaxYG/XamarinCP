@@ -7,15 +7,15 @@
     <StackLayout VerticalOptions="Center">
         <StackLayout Orientation="Horizontal">
             <Label Text="Username:" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="100"/>
-            <Entry x:Name="Username"  HorizontalOptions="FillAndExpand"/>
+            <Entry x:Name="Username"  HorizontalOptions="FillAndExpand" Text="{Binding Username}"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
             <Label Text="Password:" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="100"/>
-            <Entry x:Name="Password" IsPassword="true" HorizontalOptions="FillAndExpand"/>
+            <Entry x:Name="Password" Text="{Binding Password}" IsPassword="true" HorizontalOptions="FillAndExpand"/>
         </StackLayout>        
-        <Button Text="Login" Clicked="OnLoginButtonClicked" HorizontalOptions="FillAndExpand"/>
+        <Button Text="Login" Command="{Binding LoginCommand}" HorizontalOptions="FillAndExpand"/>
         <StackLayout Orientation="Horizontal">
-            <Label x:Name="ErrorMessage" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="100"/>
+            <Label x:Name="ErrorMessage" Text="{Binding ErrorMessage}" TextColor="Red" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="100"/>
         </StackLayout>
     </StackLayout>
     

@@ -5,8 +5,8 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinCP.Model;
-using XamarinCP.Pages;
 using XamarinCP.Service;
+using XamarinCP.Views;
 
 namespace XamarinCP.ViewModel
 {
@@ -19,8 +19,8 @@ namespace XamarinCP.ViewModel
             _navigation = navigation;
             AllCompanies = CompanyService.GetCompanyies();
         }
-       
-        public static IEnumerable<Company> AllCompanies { set; get; }
+
+        public static IEnumerable<Company> AllCompanies { get; set; }//ObservableCollection
 
         public event PropertyChangedEventHandler PropertyChanged;
 
