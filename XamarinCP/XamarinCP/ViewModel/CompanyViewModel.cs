@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinCP.Model;
 using XamarinCP.Pages;
+using XamarinCP.Service;
 
 namespace XamarinCP.ViewModel
 {
@@ -16,8 +17,9 @@ namespace XamarinCP.ViewModel
         public CompanyViewModel(INavigation navigation)
         {
             _navigation = navigation;
+            AllCompanies = CompanyService.GetCompanyies();
         }
-     
+       
         public static IEnumerable<Company> AllCompanies { set; get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -29,7 +31,7 @@ namespace XamarinCP.ViewModel
                 return new Command(async (companyId) =>
                 {
                     var companyIdCopy = int.Parse(companyId.ToString());
-                    var companyDetailPage =new CompanyDetailPage
+                    var companyDetailPage =new CompanyDetailPage()
                     {
                         BindingContext = (object)AllCompanies.First(x => x.Id == companyIdCopy)                            
                     };

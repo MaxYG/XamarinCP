@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using XamarinCP.Model;
 using XamarinCP.Pages;
 
 namespace XamarinCP
@@ -13,11 +14,7 @@ namespace XamarinCP
 
         async void OnLoginButtonClicked(object sender, EventArgs e)
         {
-            if (this.Username.Text==null || this.Password==null || this.Username.Text.Equals("") || this.Password.Text.Equals(""))
-            {
-                ErrorMessage.Text = "Username and password are required!";
-                return;
-            }
+            if (CheckUsernameAndPassword()) return;
             var loginUser = new LoginUserModel()
             {
                 Username = this.Username.Text,
@@ -34,17 +31,22 @@ namespace XamarinCP
             }
             
         }
-        
+
+        private bool CheckUsernameAndPassword()
+        {
+            if (this.Username.Text == null || this.Password == null || this.Username.Text.Equals("") ||
+                this.Password.Text.Equals(""))
+            {
+                ErrorMessage.Text = "Username and password are required!";
+                return true;
+            }
+            return false;
+        }
+
 
         private bool CompareLoginUser(LoginUserModel loginUserModel)
         {
             return loginUserModel.Username.Equals("test") && loginUserModel.Password.Equals("test");
         }
-    }
-
-    public class LoginUserModel
-    {
-        public string Username { get; set; }
-        public string Password { get; set; }
     }
 }
