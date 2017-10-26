@@ -1,0 +1,14 @@
+/XamarinCP.WebApi/obj
+/XamarinCP.WebApi/bin
+
+/XamarinCP.WebApi.Tests/bin
+/XamarinCP.WebApi.Tests/obj
+
+/XamarinCP/XamarinCP/obj
+/XamarinCP/XamarinCP/bin
+/XamarinCP/XamarinCP.Android/obj
+/XamarinCP/XamarinCP.Android/bin
+/XamarinCP/XamarinCP.iOS/obj
+/XamarinCP/XamarinCP.iOS/bin
+/XamarinCP/XamarinCP.UWP/obj
+/XamarinCP/XamarinCP.UWP/bin
