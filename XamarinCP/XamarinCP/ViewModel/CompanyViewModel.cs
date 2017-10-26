@@ -10,7 +10,7 @@ using XamarinCP.Views;
 
 namespace XamarinCP.ViewModel
 {
-    public class CompanyViewModel:INotifyPropertyChanged
+    public class CompanyViewModel: BaseViewModel
     {
         private readonly INavigation _navigation;
         
@@ -20,14 +20,11 @@ namespace XamarinCP.ViewModel
             AllCompanies = CompanyService.GetCompanyies();
         }
 
-        public static IEnumerable<Company> AllCompanies { get; set; }//ObservableCollection
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
+        public IEnumerable<Company> AllCompanies { get; set; }//ObservableCollection
+        
         public ICommand DetailCommand { 
             get
             {
-                
                 return new Command(async (companyId) =>
                 {
                     var companyIdCopy = int.Parse(companyId.ToString());
@@ -40,9 +37,5 @@ namespace XamarinCP.ViewModel
             }
         }
         
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }
