@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinCP.Model;
@@ -13,14 +14,15 @@ namespace XamarinCP.ViewModel
     public class CompanyViewModel: BaseViewModel
     {
         public string _searchText;
-        public IEnumerable<Company> allCompanies;
+        public Task<List<Company>> allCompanies;
         private readonly INavigation _navigation;
         
         public CompanyViewModel(INavigation navigation)
         {
             _navigation = navigation;
-            AllCompanies=new List<Company>();
+            AllCompanies = App.ServiceManager.GetCompaniesAsync();
         }
+        
 
         public string SearchText
         {
@@ -32,19 +34,21 @@ namespace XamarinCP.ViewModel
             }
         }
 
-        public IEnumerable<Company> AllCompanies {
+        public Task<List<Company>> AllCompanies {
             get
             {
-                
-                if (!allCompanies.Any())
+                allCompanies= App.ServiceManager.GetCompaniesAsync();
+                return allCompanies;
+                /*if (!allCompanies.Any())
                 {
                     if (!string.IsNullOrEmpty(_searchText))
                     {
                         return allCompanies;
                     }
-                    return allCompanies = CompanyService.GetCompanyies();
+                    allCompanies = await  App.ServiceManager.GetCompaniesAsync();
+                    return allCompanies;
                 }
-                return allCompanies;
+                return allCompanies;*/
             }
             set
             {
@@ -62,7 +66,7 @@ namespace XamarinCP.ViewModel
                     var companyIdCopy = int.Parse(companyId.ToString());
                     var companyDetailPage =new CompanyDetailPage()
                     {
-                        BindingContext = (object)AllCompanies.First(x => x.Id == companyIdCopy)                            
+                        BindingContext = (object)AllCompanies.Result.First(x => x.Id == companyIdCopy)                            
                     };
                     await _navigation.PushAsync(companyDetailPage);
                 });
@@ -76,7 +80,7 @@ namespace XamarinCP.ViewModel
                 return new Command(() =>
                 {
                     var companyName = _searchText;
-                    AllCompanies = CompanyService.GetCompanyies().Where(x => x.Name.Contains(companyName.ToString())).ToList();
+                    //AllCompanies = CompanyService.GetCompanyies().Where(x => x.Name.Contains(companyName.ToString())).ToList();
                 });
             }
         }

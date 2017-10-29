@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using XamarinCP.Service;
 
 namespace XamarinCP
 {
     public partial class App : Application
     {
+        public static ServiceManager ServiceManager { get; private set; }
         public App()
         {
             InitializeComponent();
-
+            ServiceManager=new ServiceManager(new RestService());
             MainPage = new NavigationPage(new XamarinCP.MainPage());
         }
 
