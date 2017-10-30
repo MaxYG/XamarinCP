@@ -6,8 +6,8 @@ namespace XamarinCP.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        private string _username;
-        private string _password;
+        private string _username="test";
+        private string _password="test";
         private string _errorMessage;
         private Command _loginCommand;
         private readonly INavigation _navigation;

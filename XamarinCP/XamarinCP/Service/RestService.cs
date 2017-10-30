@@ -22,7 +22,7 @@ namespace XamarinCP.Service
         {
             Companies = new List<Company>();
             
-            var uri = new Uri("http://192.168.1.55:8084/api/company");
+            var uri = new Uri("http://192.168.1.55:8084/api/companies");
 
             try
             {
