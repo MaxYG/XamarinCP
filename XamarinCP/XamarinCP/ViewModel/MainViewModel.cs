@@ -9,6 +9,7 @@ namespace XamarinCP.ViewModel
         private string _username="test";
         private string _password="test";
         private string _errorMessage;
+        private bool _isLogin;
         private Command _loginCommand;
         private readonly INavigation _navigation;
 
@@ -58,21 +59,23 @@ namespace XamarinCP.ViewModel
             }
         }
         
-        private void ExecuteLoginCommand(object obj)
+        private async void ExecuteLoginCommand(object obj)
         {
-            var isLogin=LoginService.Login(_username, _password);
-            if (isLogin)
+            var loginTask = App.ServiceManager.LoginAsync(_username, _password);
+            _isLogin = await loginTask;
+
+            if (_isLogin)
             {
                 var companyListPage = new CompanyListPage();
-               
-                _navigation.PushAsync(companyListPage);
+
+                await _navigation.PushAsync(companyListPage);
             }
             else
             {
                 ErrorMessage = "login failed!";
             }
         }
-
+        
         private bool CanExecuteLoginCommand(object arg)
         {
             return !(string.IsNullOrEmpty(Username) && string.IsNullOrEmpty(Password));

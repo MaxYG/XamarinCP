@@ -18,5 +18,10 @@ namespace XamarinCP.Service
         {
             return _restService.GetCompaniesAsync();
         }
+
+        public Task<bool> LoginAsync(string username,string password)
+        {
+            return _restService.LoginAsync(username,password);
+        }
     }
 }

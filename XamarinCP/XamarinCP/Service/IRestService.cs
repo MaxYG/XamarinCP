@@ -7,5 +7,6 @@ namespace XamarinCP.Service
     public interface IRestService
     {
         Task<List<Company>> GetCompaniesAsync();
+        Task<bool> LoginAsync(string username, string password);
     }
 }
