@@ -20,7 +20,7 @@ namespace XamarinCP.ViewModel
         public CompanyViewModel(INavigation navigation)
         {
             _navigation = navigation;
-            AllCompanies = App.ServiceManager.GetCompaniesAsync();
+            //AllCompanies = App.ServiceManager.GetCompaniesAsync();
         }
         
 
@@ -37,18 +37,8 @@ namespace XamarinCP.ViewModel
         public Task<List<Company>> AllCompanies {
             get
             {
-                allCompanies= App.ServiceManager.GetCompaniesAsync();
+                allCompanies = App.ServiceManager.GetCompaniesAsync();
                 return allCompanies;
-                /*if (!allCompanies.Any())
-                {
-                    if (!string.IsNullOrEmpty(_searchText))
-                    {
-                        return allCompanies;
-                    }
-                    allCompanies = await  App.ServiceManager.GetCompaniesAsync();
-                    return allCompanies;
-                }
-                return allCompanies;*/
             }
             set
             {
@@ -56,9 +46,8 @@ namespace XamarinCP.ViewModel
                 OnPropertyChanged();
             }
         }
-        //ObservableCollection
         
-        public ICommand DetailCommand { 
+        public ICommand GoDetailCommand { 
             get
             {
                 return new Command(async (companyId) =>

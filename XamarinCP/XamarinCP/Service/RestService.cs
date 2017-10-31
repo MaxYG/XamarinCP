@@ -15,24 +15,23 @@ namespace XamarinCP.Service
         public RestService()
         {
             if(_client==null)
-                _client = new HttpClient {MaxResponseContentBufferSize = 256000,Timeout = new TimeSpan(0,0,5,0)};
+                _client = new HttpClient {MaxResponseContentBufferSize = 256000,Timeout = new TimeSpan(0,0,0,10)};
         }
 
         public async Task<List<Company>> GetCompaniesAsync()
         {
             Companies = new List<Company>();
             
-            var uri = new Uri("http://192.168.1.55:8084/api/companies");
+            var uri = new Uri("http://192.168.1.55:80/api/companies");
 
             try
             {
                 var response = await _client.GetStringAsync(uri);
                
-                    var content = response;
-                    Companies = JsonConvert.DeserializeObject<List<Company>>(content);
-                
+                Companies = JsonConvert.DeserializeObject<List<Company>>(response);
+               
             }
-            catch (Exception ex)
+            catch (HttpRequestException ex)
             {
                 Debug.WriteLine(@"ERROR {0}", ex.Message);
             }

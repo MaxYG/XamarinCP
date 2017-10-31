@@ -74,7 +74,8 @@ namespace XamarinCP.ViewModel
 
         private bool CanExecuteLoginCommand(object arg)
         {
-            return true;
+//            return true;
+            return !(string.IsNullOrEmpty(Username) && string.IsNullOrEmpty(Password));
         }
     }
 }

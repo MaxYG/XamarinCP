@@ -30,7 +30,7 @@
                                                 <Label Text="{Binding Address}"></Label>
                                             </StackLayout>
                                         </StackLayout>
-                                        <Button Text=">" Command="{Binding BindingContext.DetailCommand, Source={x:Reference CompanyContentPage}}"
+                                        <Button Text=">" Command="{Binding BindingContext.GoDetailCommand, Source={x:Reference CompanyContentPage}}"
                                                 CommandParameter="{Binding Id}" HorizontalOptions="End" WidthRequest="40" 
                                                 HeightRequest="80" Margin="5"></Button>
                                     </StackLayout>
