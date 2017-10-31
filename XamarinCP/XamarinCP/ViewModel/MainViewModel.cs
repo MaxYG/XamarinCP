@@ -63,8 +63,9 @@ namespace XamarinCP.ViewModel
             var isLogin=LoginService.Login(_username, _password);
             if (isLogin)
             {
-                var companyListView = new CompanyListPage();
-                _navigation.PushAsync(companyListView);
+                var companyListPage = new CompanyListPage();
+               
+                _navigation.PushAsync(companyListPage);
             }
             else
             {
@@ -74,7 +75,6 @@ namespace XamarinCP.ViewModel
 
         private bool CanExecuteLoginCommand(object arg)
         {
-//            return true;
             return !(string.IsNullOrEmpty(Username) && string.IsNullOrEmpty(Password));
         }
     }
