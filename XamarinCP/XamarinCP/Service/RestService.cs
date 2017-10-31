@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using XamarinCP.Constants;
 using XamarinCP.Model;
 
 namespace XamarinCP.Service
@@ -22,7 +23,7 @@ namespace XamarinCP.Service
         {
             Companies = new List<Company>();
             
-            var uri = new Uri("http://192.168.1.55:80/api/companies");
+            var uri = new Uri(ConstantTools.WebApiAddress+"api/companies");
 
             try
             {
@@ -38,5 +39,6 @@ namespace XamarinCP.Service
 
             return Companies;
         }
+
     }
 }

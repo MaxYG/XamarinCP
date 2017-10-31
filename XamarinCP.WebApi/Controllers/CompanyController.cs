@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Mime;
 using System.Web.Http;
 using System.Web.Routing;
@@ -12,6 +13,19 @@ namespace XamarinCP.WebApi.Controllers
         [Route("api/companies")]
         [HttpGet]
         public List<Company> Get()
+        {
+            return GetCompanies();
+        }
+
+        [Route("api/companies")]
+        [HttpGet]
+        public List<Company> Get([FromUri]string companyName)
+        {
+            var companies= GetCompanies();
+            return companies.Where(x => x.Name.Contains(companyName)).ToList();
+        }
+
+        private List<Company> GetCompanies()
         {
             var companies = new List<Company>() {
                 new Company(){

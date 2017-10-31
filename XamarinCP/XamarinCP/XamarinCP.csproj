@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Constants\ConstantTools.cs" />
     <Compile Include="Model\LoginUserModel.cs" />
     <Compile Include="Model\Company.cs" />
     <Compile Include="Service\CompanyService.cs" />
