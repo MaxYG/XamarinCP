@@ -9,19 +9,21 @@ namespace XamarinCP.Service
 {
     public class ServiceManager
     {
-        readonly IRestService _restService;
-        public ServiceManager(IRestService service)
+        private readonly ICompanyService _companyService;
+        private readonly IAccountService _accountService;
+        public ServiceManager(ICompanyService companyService,IAccountService accountService)
         {
-            _restService = service;
+            _companyService = companyService;
+            _accountService = accountService;
         }
         public Task<List<Company>> GetCompaniesAsync()
         {
-            return _restService.GetCompaniesAsync();
+            return _companyService.GetCompaniesAsync();
         }
 
         public Task<bool> LoginAsync(string username,string password)
         {
-            return _restService.LoginAsync(username,password);
+            return _accountService.LoginAsync(username,password);
         }
     }
 }

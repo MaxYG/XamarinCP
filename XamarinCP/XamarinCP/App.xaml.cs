@@ -14,7 +14,7 @@ namespace XamarinCP
         public App()
         {
             InitializeComponent();
-            ServiceManager=new ServiceManager(new RestService());
+            ServiceManager=new ServiceManager(new CompanyService(),new AccountService());
             MainPage = new NavigationPage(new XamarinCP.MainPage());
         }
 

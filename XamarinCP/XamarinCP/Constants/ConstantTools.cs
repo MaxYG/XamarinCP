@@ -8,6 +8,6 @@ namespace XamarinCP.Constants
 {
     public class ConstantTools
     {
-        public static string WebApiAddress = "http://192.168.1.55:80/";
+        public static string WebApiAddress = "http://192.168.1.28:80/";
     }
 }

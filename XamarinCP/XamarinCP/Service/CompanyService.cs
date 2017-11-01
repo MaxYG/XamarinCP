@@ -1,34 +1,37 @@
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using XamarinCP.Constants;
 using XamarinCP.Model;
 
 namespace XamarinCP.Service
 {
-    public class CompanyService
+    public class CompanyService:ICompanyService
     {
-        public static List<Company> GetCompanyies()
-        {
-            var companies= new List<Company>() {
-                new Company(){
-                    Id = 1,
-                    Name = "company1",
-                    Address = "description 1",
-                    ImageUrl = "company1.png",
-                },
-                new Company(){
-                    Id = 2,
-                    Name = "company2",
-                    Address = "description 2",
-                    ImageUrl = "company2.png",
-                },
-                new Company(){
-                    Id = 3,
-                    Name = "company3",
-                    Address = "description 3",
-                    ImageUrl = "company3.png",
-                }
-            };
+        public List<Company> Companies { get; private set; }
 
-            return companies;
+        public async Task<List<Company>> GetCompaniesAsync()
+        {
+            Companies = new List<Company>();
+
+            var uri = new Uri(ConstantTools.WebApiAddress + "api/companies");
+
+            try
+            {
+                var response = await HttpClientService.Instance.GetStringAsync(uri);
+
+                Companies = JsonConvert.DeserializeObject<List<Company>>(response);
+
+            }
+            catch (HttpRequestException ex)
+            {
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+
+            return Companies;
         }
     }
 }

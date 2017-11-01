@@ -42,9 +42,10 @@
     <Compile Include="Model\LoginUserModel.cs" />
     <Compile Include="Model\Company.cs" />
     <Compile Include="Service\CompanyService.cs" />
-    <Compile Include="Service\IRestService.cs" />
-    <Compile Include="Service\LoginService.cs" />
-    <Compile Include="Service\RestService.cs" />
+    <Compile Include="Service\HttpClientService.cs" />
+    <Compile Include="Service\IAccountService.cs" />
+    <Compile Include="Service\ICompanyService.cs" />
+    <Compile Include="Service\AccountService.cs" />
     <Compile Include="Service\ServiceManager.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CompanyViewModel.cs" />
