@@ -17,7 +17,9 @@ namespace XamarinCP.ViewModel
         private string _searchText;
         private List<Company> _allCompanies;
         private readonly INavigation _navigation;
-        
+        private string _name;
+        private string _address;
+
         public CompanyViewModel(INavigation navigation)
         {
             _navigation = navigation;
@@ -26,13 +28,31 @@ namespace XamarinCP.ViewModel
 
         private void LoadCompaniesData()
         {
-           var companiesTask = App.ServiceManager.GetCompaniesAsync();
+           var companiesTask = App.Database.GetCompaniesAsync();
             companiesTask.ContinueWith(t =>
             {
                 AllCompanies = t.Result;
             });
         }
 
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Address
+        {
+            get { return _address; }
+            set
+            {
+                _address = value;
+                OnPropertyChanged();
+            }
+        }
         public string SearchText
         {
             get { return _searchText; }
@@ -77,11 +97,45 @@ namespace XamarinCP.ViewModel
                 return new Command(() =>
                 {
                     var companyName = _searchText;
-                    var companiesTask = App.ServiceManager.GetCompaniesAsync();
+                    var companiesTask = App.Database.GetCompaniesAsync();
                     companiesTask.ContinueWith(t =>
                     {
                         AllCompanies = t.Result.Where(x => x.Name.Contains(companyName.ToString())).ToList();
                     });
+                });
+            }
+        }
+
+        public Command GoAddCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var companyAddPage = new CompanyAddPage()
+                    {
+                        BindingContext = new CompanyViewModel(this._navigation)
+                    };
+                    await _navigation.PushAsync(companyAddPage);
+                });
+            }
+        }
+
+        public Command AddCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var company = new Company()
+                    {
+                        Name = this.Name,
+                        Address = this.Address
+                    };
+                    await App.Database.SaveCompanyAsync(company);
+                    this.LoadCompaniesData();
+                    await _navigation.PopAsync();
+                    
                 });
             }
         }

@@ -10,6 +10,7 @@
             <StackLayout Orientation="Horizontal">
                 <Entry Text="{Binding SearchText}" HorizontalOptions="FillAndExpand"/>
                 <Button  Text="Search" Command="{Binding SearchCommand}" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100"/>
+                <Button  Text="Add" Command="{Binding GoAddCommand}" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <ListView x:Name="CompanyList" ItemsSource="{Binding AllCompanies}"  RowHeight="60">
