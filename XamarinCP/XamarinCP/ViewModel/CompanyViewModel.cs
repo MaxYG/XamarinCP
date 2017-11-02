@@ -85,7 +85,5 @@ namespace XamarinCP.ViewModel
                 });
             }
         }
-
-
     }
 }

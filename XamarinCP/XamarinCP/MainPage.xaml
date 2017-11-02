@@ -12,11 +12,14 @@
         <StackLayout Orientation="Horizontal">
             <Label Text="Password:" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="100"/>
             <Entry x:Name="Password" Text="{Binding Password}" IsPassword="true" HorizontalOptions="FillAndExpand"/>
-        </StackLayout>        
-        <Button Text="Login" Command="{Binding LoginCommand}" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Login" Command="{Binding LoginCommand}" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
         <StackLayout Orientation="Horizontal">
             <Label x:Name="ErrorMessage" Text="{Binding ErrorMessage}" TextColor="Red" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="100"/>
         </StackLayout>
     </StackLayout>
+    
     
 </ContentPage>

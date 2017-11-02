@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using XamarinCP.Service;
 
 namespace XamarinCP
@@ -14,7 +9,7 @@ namespace XamarinCP
         public App()
         {
             InitializeComponent();
-            ServiceManager=new ServiceManager(new CompanyService(),new AccountService());
+            ServiceManager =new ServiceManager(new CompanyService(),new AccountService());
             MainPage = new NavigationPage(new XamarinCP.MainPage());
         }
 

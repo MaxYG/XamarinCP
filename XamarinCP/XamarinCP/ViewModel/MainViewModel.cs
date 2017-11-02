@@ -1,4 +1,8 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Threading.Tasks;
+using Acr.UserDialogs;
+using AndroidHUD;
+using Xamarin.Forms;
 using XamarinCP.Service;
 using XamarinCP.Views;
 
@@ -10,6 +14,7 @@ namespace XamarinCP.ViewModel
         private string _password="test";
         private string _errorMessage;
         private bool _isLogin;
+       
         private Command _loginCommand;
         private readonly INavigation _navigation;
 
@@ -45,7 +50,7 @@ namespace XamarinCP.ViewModel
                 OnPropertyChanged();
             }
         }
-
+        
         public Command LoginCommand
         {
             get
@@ -61,13 +66,16 @@ namespace XamarinCP.ViewModel
         
         private async void ExecuteLoginCommand(object obj)
         {
+            UserDialogs.Instance.ShowLoading();
+                
             var loginTask = App.ServiceManager.LoginAsync(_username, _password);
             _isLogin = await loginTask;
-
+                
+            await Task.Delay(3000);
+            UserDialogs.Instance.HideLoading();
             if (_isLogin)
             {
                 var companyListPage = new CompanyListPage();
-
                 await _navigation.PushAsync(companyListPage);
             }
             else

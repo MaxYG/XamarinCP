@@ -5,7 +5,6 @@
              xmlns:viewModel="clr-namespace:XamarinCP.ViewModel;assembly=XamarinCP"
              x:Class="XamarinCP.Views.CompanyListPage" x:Name="CompanyContentPage">
     
-<!--    <Label Text="sssss"></Label>-->
     <ContentPage.Content>
         <StackLayout >
             <StackLayout Orientation="Horizontal">
