@@ -50,6 +50,7 @@
     <Compile Include="Service\AccountService.cs" />
     <Compile Include="Service\ServiceManager.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\CompanyAddViewModel.cs" />
     <Compile Include="ViewModel\CompanyViewModel.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

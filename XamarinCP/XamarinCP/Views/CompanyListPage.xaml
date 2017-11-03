@@ -13,7 +13,7 @@
                 <Button  Text="Add" Command="{Binding GoAddCommand}" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <ListView x:Name="CompanyList" ItemsSource="{Binding AllCompanies}"  RowHeight="60">
+                <ListView x:Name="CompanyList" ItemsSource="{Binding AllCompanies,Mode=TwoWay}" RowHeight="60">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

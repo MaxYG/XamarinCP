@@ -1,5 +1,4 @@
-﻿
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinCP.ViewModel;
 
@@ -13,6 +12,5 @@ namespace XamarinCP.Views
             InitializeComponent();      
             this.BindingContext=new CompanyViewModel(this.Navigation);
         }
-        
     }
 }

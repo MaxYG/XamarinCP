@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -15,11 +16,9 @@ namespace XamarinCP.ViewModel
     public class CompanyViewModel: BaseViewModel
     {
         private string _searchText;
-        private List<Company> _allCompanies;
+        private ObservableCollection<Company> _allCompanies;
         private readonly INavigation _navigation;
-        private string _name;
-        private string _address;
-
+      
         public CompanyViewModel(INavigation navigation)
         {
             _navigation = navigation;
@@ -31,28 +30,10 @@ namespace XamarinCP.ViewModel
            var companiesTask = App.Database.GetCompaniesAsync();
             companiesTask.ContinueWith(t =>
             {
-                AllCompanies = t.Result;
+                AllCompanies = new ObservableCollection<Company>(t.Result);
             });
         }
-
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                _name = value;
-                OnPropertyChanged();
-            }
-        }
-        public string Address
-        {
-            get { return _address; }
-            set
-            {
-                _address = value;
-                OnPropertyChanged();
-            }
-        }
+        
         public string SearchText
         {
             get { return _searchText; }
@@ -63,9 +44,13 @@ namespace XamarinCP.ViewModel
             }
         }
 
-        public List<Company> AllCompanies {
+        public ObservableCollection<Company> AllCompanies {
             get
             {
+                if (_allCompanies==null)
+                {
+                    _allCompanies=new ObservableCollection<Company>();
+                }
                 return _allCompanies;
             }
             set
@@ -100,7 +85,7 @@ namespace XamarinCP.ViewModel
                     var companiesTask = App.Database.GetCompaniesAsync();
                     companiesTask.ContinueWith(t =>
                     {
-                        AllCompanies = t.Result.Where(x => x.Name.Contains(companyName.ToString())).ToList();
+                        AllCompanies = new ObservableCollection<Company>(t.Result.Where(x => x.Name.Contains(companyName.ToString())).ToList());
                     });
                 });
             }
@@ -114,28 +99,11 @@ namespace XamarinCP.ViewModel
                 {
                     var companyAddPage = new CompanyAddPage()
                     {
-                        BindingContext = new CompanyViewModel(this._navigation)
+                        BindingContext = new CompanyAddViewModel(_navigation,AllCompanies)
+                        
                     };
-                    await _navigation.PushAsync(companyAddPage);
-                });
-            }
-        }
 
-        public Command AddCommand
-        {
-            get
-            {
-                return new Command(async () =>
-                {
-                    var company = new Company()
-                    {
-                        Name = this.Name,
-                        Address = this.Address
-                    };
-                    await App.Database.SaveCompanyAsync(company);
-                    this.LoadCompaniesData();
-                    await _navigation.PopAsync();
-                    
+                    await _navigation.PushAsync(companyAddPage);
                 });
             }
         }
