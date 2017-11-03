@@ -50,18 +50,23 @@
     <Compile Include="Service\AccountService.cs" />
     <Compile Include="Service\ServiceManager.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\CompanyAddViewModel.cs" />
-    <Compile Include="ViewModel\CompanyViewModel.cs" />
+    <Compile Include="ViewModel\CompanyModel\CompanyAddViewModel.cs" />
+    <Compile Include="ViewModel\CompanyModel\CompanyDetailViewModel.cs" />
+    <Compile Include="ViewModel\CompanyModel\CompanyEditViewModel.cs" />
+    <Compile Include="ViewModel\CompanyModel\CompanyViewModel.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CompanyAddPage.xaml.cs">
+    <Compile Include="Views\Company\CompanyAddPage.xaml.cs">
       <DependentUpon>CompanyAddPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CompanyDetailPage.xaml.cs">
+    <Compile Include="Views\Company\CompanyDetailPage.xaml.cs">
       <DependentUpon>CompanyDetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CompanyListPage.xaml.cs">
+    <Compile Include="Views\Company\CompanyEditPage.xaml.cs">
+      <DependentUpon>CompanyEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Company\CompanyListPage.xaml.cs">
       <DependentUpon>CompanyListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,19 +133,25 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\CompanyListPage.xaml">
+    <EmbeddedResource Include="Views\Company\CompanyListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\CompanyDetailPage.xaml">
+    <EmbeddedResource Include="Views\Company\CompanyDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\CompanyAddPage.xaml">
+    <EmbeddedResource Include="Views\Company\CompanyAddPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Company\CompanyEditPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

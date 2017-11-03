@@ -74,7 +74,7 @@ namespace XamarinCP.ViewModel
             UserDialogs.Instance.HideLoading();
             if (_isLogin)
             {
-                var companyListPage = new CompanyListPage();
+                var companyListPage = new Views.Company.CompanyListPage();
                 await _navigation.PushAsync(companyListPage);
             }
             else
