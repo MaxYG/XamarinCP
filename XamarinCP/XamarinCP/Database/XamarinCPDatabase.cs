@@ -27,5 +27,15 @@ namespace XamarinCP.Database
             }
             return _database.InsertAsync(company);
         }
+
+        public Task<int> DeleteCompanyAsync(Company company)
+        {
+            return _database.DeleteAsync(company);
+        }
+
+        public Task<Company> GetCompanyByIdAsync(int id)
+        {
+            return _database.Table<Company>().Where(i => i.Id == id).FirstOrDefaultAsync();
+        }
     }
 }

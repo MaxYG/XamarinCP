@@ -16,6 +16,8 @@ namespace XamarinCP
             MainPage = new NavigationPage(new XamarinCP.MainPage());
         }
 
+        public int ResumeAtTodoId { get; set; }
+
         public static XamarinCPDatabase Database
         {
             get
@@ -27,6 +29,7 @@ namespace XamarinCP
                 return _database;
             }
         }
+
 
         protected override void OnStart()
         {

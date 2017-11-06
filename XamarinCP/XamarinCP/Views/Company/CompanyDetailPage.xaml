@@ -17,6 +17,7 @@
             </StackLayout>
             <StackLayout  Orientation = "Horizontal" VerticalOptions = "EndAndExpand">
                 <Button Text = "Edit" Command="{Binding GoEditCommand}" HorizontalOptions = "FillAndExpand" />
+                <Button Text = "Delete" Command="{Binding DeleteCommand}" HorizontalOptions = "FillAndExpand" />
             </StackLayout>
         </StackLayout>
 

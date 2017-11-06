@@ -10,6 +10,7 @@ namespace XamarinCP.ViewModel
     public class CompanyViewModel: BaseViewModel
     {
         private string _searchText;
+        private bool _isRefresh;
         private ObservableCollection<Company> _allCompanies;
         private readonly INavigation _navigation;
       
@@ -17,6 +18,7 @@ namespace XamarinCP.ViewModel
         {
             _navigation = navigation;
             LoadCompaniesData();
+            IsRefresh = false;
         }
 
         private void LoadCompaniesData()
@@ -35,6 +37,15 @@ namespace XamarinCP.ViewModel
             {
                 _searchText = value;
                 OnPropertyChanged(); 
+            }
+        }
+        public bool IsRefresh
+        {
+            get { return _isRefresh; }
+            set
+            {
+                _isRefresh = value;
+                OnPropertyChanged();
             }
         }
 
@@ -99,6 +110,20 @@ namespace XamarinCP.ViewModel
                     };
 
                     await _navigation.PushAsync(companyAddPage);
+                });
+            }
+        }
+
+        public Command RefreshCommand
+        {
+            get
+            {                
+                return new Command(async () =>
+                {
+                    IsRefresh = true;
+                    var companiesTask =await App.Database.GetCompaniesAsync();
+                    AllCompanies=new ObservableCollection<Company>(companiesTask.ToList());
+                    IsRefresh = false;
                 });
             }
         }

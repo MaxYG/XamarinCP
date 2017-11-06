@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System.Diagnostics;
+using Acr.UserDialogs;
+using Xamarin.Forms;
 
 namespace XamarinCP.ViewModel.CompanyModel
 {
@@ -29,6 +31,28 @@ namespace XamarinCP.ViewModel.CompanyModel
                         BindingContext = new CompanyModel.CompanyEditViewModel(this._navigation, Id)
                     };
                     _navigation.PushAsync(companyEditPage);
+                });
+            }
+        }
+
+        public Command DeleteCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var result = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
+                    {
+                        Message = "Delete this company?",
+                        OkText = "Delete",
+                        CancelText = "Cancel"
+                    });
+                    if (result)
+                    {
+                        var company = await App.Database.GetCompanyByIdAsync(Id);
+                        await App.Database.DeleteCompanyAsync(company);
+                        await _navigation.PopAsync();
+                    }
                 });
             }
         }
