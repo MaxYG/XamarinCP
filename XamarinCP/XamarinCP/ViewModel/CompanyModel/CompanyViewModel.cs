@@ -122,7 +122,8 @@ namespace XamarinCP.ViewModel.CompanyModel
                 {
                     IsRefresh = true;
                     var companiesTask =await App.Database.GetCompaniesAsync();
-                    AllCompanies=new ObservableCollection<Company>(companiesTask.ToList());
+                    this.AllCompanies =new ObservableCollection<Company>(companiesTask);
+                    this.AllCompanies = this.AllCompanies;
                     IsRefresh = false;
                 });
             }
