@@ -3,9 +3,8 @@ using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinCP.Model;
-using XamarinCP.Views;
 
-namespace XamarinCP.ViewModel
+namespace XamarinCP.ViewModel.CompanyModel
 {
     public class CompanyViewModel: BaseViewModel
     {
@@ -13,7 +12,8 @@ namespace XamarinCP.ViewModel
         private bool _isRefresh;
         private ObservableCollection<Company> _allCompanies;
         private readonly INavigation _navigation;
-      
+
+
         public CompanyViewModel(INavigation navigation)
         {
             _navigation = navigation;
@@ -106,7 +106,7 @@ namespace XamarinCP.ViewModel
                 {
                     var companyAddPage = new Views.Company.CompanyAddPage()
                     {
-                        BindingContext = new CompanyModel.CompanyAddViewModel(_navigation,AllCompanies)
+                        BindingContext = new CompanyModel.CompanyAddViewModel(_navigation, this)
                     };
 
                     await _navigation.PushAsync(companyAddPage);

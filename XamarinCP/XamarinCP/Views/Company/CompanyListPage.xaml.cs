@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinCP.ViewModel;
+using XamarinCP.ViewModel.CompanyModel;
 
 namespace XamarinCP.Views.Company
 {

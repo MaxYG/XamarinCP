@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamarinCP"
              xmlns:viewModel="clr-namespace:XamarinCP.ViewModel;assembly=XamarinCP"
-             x:Class="XamarinCP.Views.Company.CompanyListPage" x:Name="CompanyContentPage">
+             x:Class="XamarinCP.Views.Company.CompanyListPage" 
+             x:Name="CompanyContentPage">
     
     <ContentPage.Content>
         <StackLayout >
@@ -13,7 +14,9 @@
                 <Button  Text="Add" Command="{Binding GoAddCommand}" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <ListView x:Name="CompanyList" ItemsSource="{Binding AllCompanies,Mode=TwoWay}" RowHeight="60" IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsRefresh}" RefreshCommand="{Binding RefreshCommand}">
+                <ListView x:Name="CompanyList" ItemsSource="{Binding AllCompanies,Mode=TwoWay}" 
+                          RowHeight="60" IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsRefresh}" 
+                          RefreshCommand="{Binding RefreshCommand}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

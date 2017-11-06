@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using XamarinCP.Model;
 
 namespace XamarinCP.ViewModel.CompanyModel
 {
@@ -9,11 +10,11 @@ namespace XamarinCP.ViewModel.CompanyModel
         private string _name;
         private string _address;
         private readonly INavigation _navigation;
-        private readonly ObservableCollection<Model.Company> _allCompanies;
-        public CompanyAddViewModel(INavigation navigation, ObservableCollection<Model.Company> allCompanies)
+        private CompanyViewModel _companyViewModel;
+        public CompanyAddViewModel(INavigation navigation, CompanyViewModel companyViewModel)
         {
             _navigation = navigation;
-            _allCompanies = allCompanies;
+            _companyViewModel = companyViewModel;
         }
 
 
@@ -45,11 +46,13 @@ namespace XamarinCP.ViewModel.CompanyModel
                     var company = new Model.Company()
                     {
                         Name = this.Name,
-                        Address = this.Address
+                        Address = this.Address,
+                        ImageUrl = "icon.png",
                     };
 
                     await App.Database.SaveCompanyAsync(company);
-                    _allCompanies.Add(company);
+                    _companyViewModel.AllCompanies.Add(company);
+                    _companyViewModel.AllCompanies = _companyViewModel.AllCompanies;
                     await _navigation.PopAsync();
                 });
             }
