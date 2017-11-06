@@ -70,12 +70,11 @@ namespace XamarinCP.ViewModel
                 
             var loginTask = App.ServiceManager.LoginAsync(_username, _password);
             _isLogin = await loginTask;
-                
-            await Task.Delay(3000);
+            
             UserDialogs.Instance.HideLoading();
             if (_isLogin)
             {
-                var companyListPage = new CompanyListPage();
+                var companyListPage = new Views.Company.CompanyListPage();
                 await _navigation.PushAsync(companyListPage);
             }
             else
