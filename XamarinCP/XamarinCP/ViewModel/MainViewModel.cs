@@ -68,9 +68,10 @@ namespace XamarinCP.ViewModel
         {
             UserDialogs.Instance.ShowLoading();
                 
-            var loginTask = App.ServiceManager.LoginAsync(_username, _password);
-            _isLogin = await loginTask;
-            
+//            var loginTask = App.ServiceManager.LoginAsync(_username, _password);
+//            _isLogin = await loginTask;
+            await Task.Delay(3000);
+            _isLogin = true;
             UserDialogs.Instance.HideLoading();
             if (_isLogin)
             {
