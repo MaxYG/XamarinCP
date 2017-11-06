@@ -9,17 +9,22 @@ namespace XamarinCP.ViewModel.CompanyModel
         private string _name;
         private string _address;
         private int _id;
-        public CompanyEditViewModel(INavigation navigation,int companyId)
+        private CompanyViewModel _companyViewModel;
+        private CompanyDetailViewModel _companyDetailViewModel;
+        public CompanyEditViewModel(INavigation navigation, CompanyDetailViewModel companyDetailViewModel,
+            CompanyViewModel companyViewModel)
         {
             _navigation = navigation;
-            var companiesTask = App.Database.GetCompaniesAsync();
-            companiesTask.ContinueWith(x =>
-            {
-                var company = x.Result.First(c => c.Id == companyId);
-                this.Id = company.Id;
-                this.Name = company.Name;
-                this.Address = company.Address;
-            });
+            GetCompanyById(companyDetailViewModel);
+            _companyViewModel = companyViewModel;
+            _companyDetailViewModel = companyDetailViewModel;
+        }
+
+        private void GetCompanyById(CompanyDetailViewModel companyDetailViewModel)
+        {
+            this.Id = companyDetailViewModel.Id;
+            this.Name = companyDetailViewModel.Name;
+            this.Address = companyDetailViewModel.Address;
         }
 
         public int Id
@@ -60,13 +65,22 @@ namespace XamarinCP.ViewModel.CompanyModel
                     {
                         Id = this.Id,
                         Name = this.Name,
-                        Address = this.Address
+                        Address = this.Address,
+                        ImageUrl = "icon.png"
                     };
-
+                    
                     await App.Database.SaveCompanyAsync(company);
+                    _companyDetailViewModel.Name = this.Name;
+                    _companyDetailViewModel.Address = this.Address;
+                    var removeCompany = _companyViewModel.AllCompanies.First(x => x.Id == this.Id);
+                    _companyViewModel.AllCompanies.Remove(removeCompany);
+                    _companyViewModel.AllCompanies.Add(company);
+                    _companyViewModel.AllCompanies = _companyViewModel.AllCompanies;
                     await _navigation.PopAsync();
                 });
             }
         }
+
+        
     }
 }

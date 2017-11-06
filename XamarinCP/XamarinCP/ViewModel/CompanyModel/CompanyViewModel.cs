@@ -75,7 +75,7 @@ namespace XamarinCP.ViewModel.CompanyModel
                     var companyDetailPage =new Views.Company.CompanyDetailPage()
                     {
                         
-                        BindingContext = new CompanyModel.CompanyDetailViewModel(this._navigation,companyDetail)                            
+                        BindingContext = new CompanyModel.CompanyDetailViewModel(this._navigation,companyDetail,this)                            
                     };
                     await _navigation.PushAsync(companyDetailPage);
                 });
