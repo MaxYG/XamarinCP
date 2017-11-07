@@ -10,4 +10,5 @@ namespace XamarinCP.Model
         public string Address { get; set; }
         public string ImageUrl { get; set; }
     }
+    
 }

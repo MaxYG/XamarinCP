@@ -22259,30 +22259,30 @@
     "UAP,Version=v10.0.10586": []
   },
   "packageFolders": {
-    "C:\\Users\\yg\\.nuget\\packages\\": {}
+    "C:\\Users\\shinetech-yg\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "D:\\study\\XamarinDemo\\XamarinCP\\XamarinCP\\XamarinCP.UWP\\XamarinCP.UWP.csproj",
+      "projectUniqueName": "F:\\study\\XamrinDemo\\XamarinCP\\XamarinCP\\XamarinCP.UWP\\XamarinCP.UWP.csproj",
       "projectName": "XamarinCP.UWP",
-      "projectPath": "D:\\study\\XamarinDemo\\XamarinCP\\XamarinCP\\XamarinCP.UWP\\XamarinCP.UWP.csproj",
-      "projectJsonPath": "D:\\study\\XamarinDemo\\XamarinCP\\XamarinCP\\XamarinCP.UWP\\project.json",
-      "packagesPath": "C:\\Users\\yg\\.nuget\\packages\\",
-      "outputPath": "D:\\study\\XamarinDemo\\XamarinCP\\XamarinCP\\XamarinCP.UWP\\obj\\",
+      "projectPath": "F:\\study\\XamrinDemo\\XamarinCP\\XamarinCP\\XamarinCP.UWP\\XamarinCP.UWP.csproj",
+      "projectJsonPath": "F:\\study\\XamrinDemo\\XamarinCP\\XamarinCP\\XamarinCP.UWP\\project.json",
+      "packagesPath": "C:\\Users\\shinetech-yg\\.nuget\\packages\\",
+      "outputPath": "F:\\study\\XamrinDemo\\XamarinCP\\XamarinCP\\XamarinCP.UWP\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
-        "C:\\Users\\yg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\shinetech-yg\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://nuget.episerver.com/feed/packages.svc/": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "uap10.0.10586": {
           "projectReferences": {
-            "D:\\study\\XamarinDemo\\XamarinCP\\XamarinCP\\XamarinCP\\XamarinCP.csproj": {
-              "projectPath": "D:\\study\\XamarinDemo\\XamarinCP\\XamarinCP\\XamarinCP\\XamarinCP.csproj"
+            "F:\\study\\XamrinDemo\\XamarinCP\\XamarinCP\\XamarinCP\\XamarinCP.csproj": {
+              "projectPath": "F:\\study\\XamrinDemo\\XamarinCP\\XamarinCP\\XamarinCP\\XamarinCP.csproj"
             }
           }
         }

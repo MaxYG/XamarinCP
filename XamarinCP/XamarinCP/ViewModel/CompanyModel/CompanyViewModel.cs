@@ -26,7 +26,7 @@ namespace XamarinCP.ViewModel.CompanyModel
            var companiesTask = App.Database.GetCompaniesAsync();
             companiesTask.ContinueWith(t =>
             {
-                AllCompanies = new ObservableCollection<Company>(t.Result);
+                AllCompanies = !t.Result.Any() ? new ObservableCollection<Company>() : new ObservableCollection<Company>(t.Result);
             });
         }
         

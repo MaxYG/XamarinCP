@@ -43,6 +43,7 @@
     <Compile Include="IFileHelper.cs" />
     <Compile Include="Model\LoginUserModel.cs" />
     <Compile Include="Model\Company.cs" />
+    <Compile Include="Model\XamarinCPMasterDetailPageMenuItem.cs" />
     <Compile Include="Service\CompanyService.cs" />
     <Compile Include="Service\HttpClientService.cs" />
     <Compile Include="IService\IAccountService.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\MasterPage\XamarinCPMasterDetailPageMasterViewModel.cs" />
     <Compile Include="Views\Company\CompanyAddPage.xaml.cs">
       <DependentUpon>CompanyAddPage.xaml</DependentUpon>
     </Compile>
@@ -71,6 +73,15 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="Views\MasterPage\XamarinCPMasterDetailPage.xaml.cs">
+      <DependentUpon>XamarinCPMasterDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterPage\XamarinCPMasterDetailPageDetail.xaml.cs">
+      <DependentUpon>XamarinCPMasterDetailPageDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterPage\XamarinCPMasterDetailPageMaster.xaml.cs">
+      <DependentUpon>XamarinCPMasterDetailPageMaster.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -152,6 +163,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Company\CompanyEditPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterPage\XamarinCPMasterDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterPage\XamarinCPMasterDetailPageMaster.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MasterPage\XamarinCPMasterDetailPageDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
