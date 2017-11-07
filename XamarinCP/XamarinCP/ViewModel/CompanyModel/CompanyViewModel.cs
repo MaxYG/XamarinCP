@@ -52,10 +52,6 @@ namespace XamarinCP.ViewModel.CompanyModel
         public ObservableCollection<Company> AllCompanies {
             get
             {
-                if (_allCompanies==null)
-                {
-                    _allCompanies=new ObservableCollection<Company>();
-                }
                 return _allCompanies;
             }
             set
