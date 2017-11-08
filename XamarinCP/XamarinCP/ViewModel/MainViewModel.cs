@@ -5,6 +5,7 @@ using AndroidHUD;
 using Xamarin.Forms;
 using XamarinCP.Service;
 using XamarinCP.Views;
+using XamarinCP.Views.MasterPage;
 
 namespace XamarinCP.ViewModel
 {
@@ -70,13 +71,17 @@ namespace XamarinCP.ViewModel
                 
 //            var loginTask = App.ServiceManager.LoginAsync(_username, _password);
 //            _isLogin = await loginTask;
-            await Task.Delay(3000);
+            await Task.Delay(1000);
             _isLogin = true;
             UserDialogs.Instance.HideLoading();
             if (_isLogin)
             {
-                var companyListPage = new Views.Company.CompanyListPage();
-                await _navigation.PushAsync(companyListPage);
+                //var companyListPage = new Views.Company.CompanyListPage();
+                var marterPage = new XamarinCPMasterDetailPage();
+//                var mainPage=new MainPage();
+//                _navigation.InsertPageBefore(marterPage, mainPage);
+//                await _navigation.PopAsync();
+                Application.Current.MainPage = marterPage;
             }
             else
             {
