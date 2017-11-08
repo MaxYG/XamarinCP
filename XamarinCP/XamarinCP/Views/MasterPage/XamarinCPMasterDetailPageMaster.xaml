@@ -17,7 +17,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="17"/>
           </Grid.RowDefinitions>
-          <Label Grid.Column="1" Grid.Row="1" Text="AppName" Style="{DynamicResource SubtitleStyle}"/>
+          <Label Grid.Column="1" Grid.Row="1" Text="Function" Style="{DynamicResource SubtitleStyle}"/>
         </Grid>
       </ListView.Header>
       <ListView.ItemTemplate>

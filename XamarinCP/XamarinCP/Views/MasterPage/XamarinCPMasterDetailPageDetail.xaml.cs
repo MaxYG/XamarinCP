@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace XamarinCP.Views.MasterPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class XamarinCPMasterDetailPageDetail : ContentPage
+    public partial class XamarinCPMasterDetailPageDetail : TabbedPage
     {
         public XamarinCPMasterDetailPageDetail()
         {

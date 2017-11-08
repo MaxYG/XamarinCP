@@ -50,6 +50,7 @@
     <Compile Include="IService\ICompanyService.cs" />
     <Compile Include="Service\AccountService.cs" />
     <Compile Include="Service\ServiceManager.cs" />
+    <Compile Include="Tools\ItemTappedAttached.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CompanyModel\CompanyAddViewModel.cs" />
     <Compile Include="ViewModel\CompanyModel\CompanyDetailViewModel.cs" />

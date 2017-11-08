@@ -1,9 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinCP.Views.MasterPage.XamarinCPMasterDetailPageDetail"
-             Title="Detail-test">
-  <StackLayout Padding="10">
+
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:XamarinCP;assembly=XamarinCP"
+            xmlns:company="clr-namespace:XamarinCP.Views.Company;assembly=XamarinCP"
+            x:Class="XamarinCP.Views.MasterPage.XamarinCPMasterDetailPageDetail"
+            
+            Title="XamarinCP Project">
+
+    <company:CompanyListPage></company:CompanyListPage>
+    <ContentPage Title="Tab 2">
+        <StackLayout>
+            <Label Text="tab2 content"></Label>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Tab 3">
+        <StackLayout>
+            <Label Text="tab3 content"></Label>
+        </StackLayout>
+    </ContentPage>
     
-  </StackLayout>
-</ContentPage>
+</TabbedPage>
+

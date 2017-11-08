@@ -60,18 +60,18 @@ namespace XamarinCP.ViewModel.CompanyModel
                 OnPropertyChanged();
             }
         }
-        
-        public ICommand GoDetailCommand { 
+
+        public ICommand SelectedCommand
+        {
             get
             {
-                return new Command(async (companyId) =>
+                return new Command(async (company) =>
                 {
-                    var companyIdCopy = int.Parse(companyId.ToString());
-                    var companyDetail = AllCompanies.First(x => x.Id == companyIdCopy);
-                    var companyDetailPage =new Views.Company.CompanyDetailPage()
+                    var companyCopy = (Company) company;
+                    var companyDetail = AllCompanies.First(x => x.Id == companyCopy.Id);
+                    var companyDetailPage = new Views.Company.CompanyDetailPage()
                     {
-                        
-                        BindingContext = new CompanyModel.CompanyDetailViewModel(this._navigation,companyDetail,this)                            
+                        BindingContext = new CompanyModel.CompanyDetailViewModel(this._navigation, companyDetail, this)
                     };
                     await _navigation.PushAsync(companyDetailPage);
                 });
@@ -85,11 +85,18 @@ namespace XamarinCP.ViewModel.CompanyModel
                 return new Command(() =>
                 {
                     var companyName = _searchText;
-                    var companiesTask = App.Database.GetCompaniesAsync();
-                    companiesTask.ContinueWith(t =>
+                    if (string.IsNullOrEmpty(companyName))
                     {
-                        AllCompanies = new ObservableCollection<Company>(t.Result.Where(x => x.Name.Contains(companyName.ToString())).ToList());
-                    });
+                        AllCompanies = this.AllCompanies;
+                    }
+                    else
+                    {
+                        var companiesTask = App.Database.GetCompaniesAsync();
+                        companiesTask.ContinueWith(t =>
+                        {
+                            AllCompanies = new ObservableCollection<Company>(t.Result.Where(x => x.Name.Contains(companyName.ToString())).ToList());
+                        });
+                    }
                 });
             }
         }
